@@ -9,6 +9,9 @@ class Solution:
         # y_pred: predicted probabilities
         # Hint: add a small epsilon (1e-7) to y_pred to avoid log(0)
         # return round(your_answer, 4)
+        eps = 1e-7
+        y_pred = np.clip(y_pred, eps, 1-eps)
+
         true_low = y_true * np.log(y_pred)
         false_high = (1 - y_true) * np.log(1 - y_pred)
 
@@ -20,5 +23,7 @@ class Solution:
         # y_pred: predicted probabilities (shape: n_samples x n_classes)
         # Hint: add a small epsilon (1e-7) to y_pred to avoid log(0)
         # return round(your_answer, 4)
+        eps = 1e-7
+        y_pred = np.clip(y_pred, eps, 1-eps)
         ans = -np.mean(np.sum(y_true * np.log(y_pred), axis=1))
         return round(ans, 4)
