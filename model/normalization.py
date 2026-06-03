@@ -14,7 +14,8 @@ class Solution:
         epsilon = 1e-5
 
         mean = np.mean(x)
-        std_dev = np.sqrt(np.mean((x - mean) ** 2))
+        # std_dev = np.sqrt(np.mean((x - mean) ** 2))
+        variance = np.var(x)
 
-        x_hat = (x - mean) / np.sqrt(std_dev ** 2 + epsilon) * gamma + beta
+        x_hat = (x - mean) / np.sqrt(variance + epsilon) * gamma + beta
         return np.round(x_hat, 5)
