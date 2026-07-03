@@ -19,4 +19,4 @@ class Solution(nn.Module):
         y = self.linear(mean)
         y_hat = self.sigmoid(y)
 
-        return torch.unsqueeze(y_hat, dim=-1)
+        return torch.round(y_hat, decimals=4)
