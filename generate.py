@@ -27,7 +27,6 @@ class Solution:
             next_char = torch.multinomial(preds, 1, generator=generator)
             # MORE OF YOUR CODE (arbitrary number of lines)
 
-            print(next_char)
             context = torch.cat((context, next_char), dim=1)
             result.append(int_to_char[next_char.item()])
 
