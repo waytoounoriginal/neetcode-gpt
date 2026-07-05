@@ -16,7 +16,7 @@ class Solution:
         initial_state = generator.get_state()
         for i in range(new_chars):
             if len(context.T) > context_length:
-                context = context[:, -context_length]
+                context = context[:, -context_length:]
 
             logits = model(context)
             preds = torch.softmax(logits[-1], dim=-1)
