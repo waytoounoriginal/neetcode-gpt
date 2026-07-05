@@ -15,7 +15,6 @@ class Solution:
         list_of_merges = []
 
         for ii in range(num_merges):
-            print(ii, curr_items)
 
             freq = {}
             to_replace = defaultdict(set)
