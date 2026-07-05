@@ -19,7 +19,7 @@ class Solution:
                 context = context[:, -context_length:]
 
             logits = model(context)
-            preds = torch.softmax(logits[-1], dim=-1)
+            preds = torch.softmax(logits[:, -1, :], dim=-1)
 
             # YOUR CODE (arbitrary number of lines)
             # The line where you call torch.multinomial(). Pass in the generator as well.
@@ -27,7 +27,8 @@ class Solution:
             next_char = torch.multinomial(preds, 1, generator=generator)
             # MORE OF YOUR CODE (arbitrary number of lines)
 
-            context = torch.cat((context, next_char))
+            print(next_char)
+            context = torch.cat((context, next_char), dim=1)
             result.append(int_to_char[next_char.item()])
 
         # Once your code passes the test, check out the Colab link to see your code generate new Drake lyrics!
